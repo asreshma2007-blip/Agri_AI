@@ -1,0 +1,1350 @@
+export interface CropData {
+  name: string;
+  season: string[];
+  states: string[];
+  soilTypes: string[];
+  minTemp: number;
+  maxTemp: number;
+  minRainfall: number;
+  maxRainfall: number;
+  minHumidity: number;
+  maxHumidity: number;
+  minPh: number;
+  maxPh: number;
+  nitrogenReq: "Low" | "Medium" | "High";
+  phosphorusReq: "Low" | "Medium" | "High";
+  potassiumReq: "Low" | "Medium" | "High";
+  waterReq: "Low" | "Medium" | "High";
+  growingDays: number;
+  yieldPerAcre: string;
+  profitPerAcre: string;
+  irrigationNeeded: boolean;
+  droughtTolerance: "Low" | "Medium" | "High";
+  diseases: string[];
+}
+export const cropDataset: CropData[] = [
+  // ===== KHARIF CROPS =====
+  {
+    name: "Rice",
+    season: ["kharif", "autumn"],
+    states: ["West Bengal", "Uttar Pradesh", "Punjab", "Andhra Pradesh", "Tamil Nadu", "Bihar", "Odisha", "Assam", "Chhattisgarh", "Karnataka", "Telangana", "Jharkhand"],
+    soilTypes: ["Clay Soil", "Loamy Soil", "Black Soil"],
+    minTemp: 20, maxTemp: 37,
+    minRainfall: 150, maxRainfall: 300,
+    minHumidity: 60, maxHumidity: 95,
+    minPh: 5.5, maxPh: 7.0,
+    nitrogenReq: "High", phosphorusReq: "Medium", potassiumReq: "Medium",
+    waterReq: "High",
+    growingDays: 120,
+    yieldPerAcre: "18-25 quintals",
+    profitPerAcre: "₹25,000 - ₹40,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Blast", "Bacterial Leaf Blight", "Sheath Blight", "Brown Spot", "Tungro"],
+  },
+  {
+    name: "Maize",
+    season: ["kharif", "rabi"],
+    states: ["Karnataka", "Madhya Pradesh", "Bihar", "Tamil Nadu", "Andhra Pradesh", "Rajasthan", "Uttar Pradesh", "Maharashtra", "Telangana", "Gujarat"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Red Soil"],
+    minTemp: 21, maxTemp: 35,
+    minRainfall: 80, maxRainfall: 200,
+    minHumidity: 50, maxHumidity: 80,
+    minPh: 5.5, maxPh: 7.5,
+    nitrogenReq: "High", phosphorusReq: "Medium", potassiumReq: "Low",
+    waterReq: "Medium",
+    growingDays: 100,
+    yieldPerAcre: "20-30 quintals",
+    profitPerAcre: "₹20,000 - ₹35,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["Downy Mildew", "Leaf Blight", "Stalk Rot", "Rust", "Smut"],
+  },
+  {
+    name: "Cotton",
+    season: ["kharif"],
+    states: ["Gujarat", "Maharashtra", "Telangana", "Andhra Pradesh", "Madhya Pradesh", "Karnataka", "Rajasthan", "Haryana", "Punjab"],
+    soilTypes: ["Black Soil", "Loamy Soil", "Red Soil"],
+    minTemp: 25, maxTemp: 40,
+    minRainfall: 60, maxRainfall: 150,
+    minHumidity: 40, maxHumidity: 70,
+    minPh: 6.0, maxPh: 8.0,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "Medium",
+    growingDays: 160,
+    yieldPerAcre: "8-12 quintals",
+    profitPerAcre: "₹30,000 - ₹55,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["Boll Rot", "Wilt", "Leaf Curl", "Grey Mildew", "Bacterial Blight"],
+  },
+  {
+    name: "Soybean",
+    season: ["kharif"],
+    states: ["Madhya Pradesh", "Maharashtra", "Rajasthan", "Karnataka", "Telangana"],
+    soilTypes: ["Black Soil", "Loamy Soil", "Clay Soil"],
+    minTemp: 20, maxTemp: 35,
+    minRainfall: 60, maxRainfall: 150,
+    minHumidity: 50, maxHumidity: 80,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Low", phosphorusReq: "High", potassiumReq: "Medium",
+    waterReq: "Medium",
+    growingDays: 95,
+    yieldPerAcre: "8-12 quintals",
+    profitPerAcre: "₹20,000 - ₹35,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["Rust", "Pod Blight", "Yellow Mosaic", "Leaf Spot", "Root Rot"],
+  },
+  {
+    name: "Groundnut",
+    season: ["kharif", "rabi"],
+    states: ["Gujarat", "Andhra Pradesh", "Tamil Nadu", "Karnataka", "Rajasthan", "Maharashtra"],
+    soilTypes: ["Sandy Soil", "Red Soil", "Loamy Soil"],
+    minTemp: 22, maxTemp: 35,
+    minRainfall: 50, maxRainfall: 120,
+    minHumidity: 40, maxHumidity: 70,
+    minPh: 6.0, maxPh: 7.0,
+    nitrogenReq: "Low", phosphorusReq: "High", potassiumReq: "Medium",
+    waterReq: "Low",
+    growingDays: 110,
+    yieldPerAcre: "10-15 quintals",
+    profitPerAcre: "₹25,000 - ₹45,000",
+    irrigationNeeded: false,
+    droughtTolerance: "High",
+    diseases: ["Tikka Disease", "Collar Rot", "Stem Rot", "Rust", "Leaf Spot"],
+  },
+  {
+    name: "Sugarcane",
+    season: ["kharif", "wholeYear"],
+    states: ["Uttar Pradesh", "Maharashtra", "Karnataka", "Tamil Nadu", "Gujarat", "Bihar", "Andhra Pradesh", "Punjab", "Haryana"],
+    soilTypes: ["Loamy Soil", "Black Soil", "Clay Soil"],
+    minTemp: 20, maxTemp: 40,
+    minRainfall: 100, maxRainfall: 250,
+    minHumidity: 55, maxHumidity: 85,
+    minPh: 6.0, maxPh: 8.0,
+    nitrogenReq: "High", phosphorusReq: "High", potassiumReq: "High",
+    waterReq: "High",
+    growingDays: 365,
+    yieldPerAcre: "300-400 quintals",
+    profitPerAcre: "₹60,000 - ₹1,20,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Red Rot", "Smut", "Wilt", "Grassy Shoot", "Leaf Scald"],
+  },
+  {
+    name: "Jowar (Sorghum)",
+    season: ["kharif", "rabi"],
+    states: ["Maharashtra", "Karnataka", "Rajasthan", "Madhya Pradesh", "Andhra Pradesh", "Telangana", "Tamil Nadu"],
+    soilTypes: ["Black Soil", "Red Soil", "Loamy Soil"],
+    minTemp: 25, maxTemp: 40,
+    minRainfall: 40, maxRainfall: 100,
+    minHumidity: 30, maxHumidity: 65,
+    minPh: 6.0, maxPh: 8.5,
+    nitrogenReq: "Medium", phosphorusReq: "Low", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 110,
+    yieldPerAcre: "10-15 quintals",
+    profitPerAcre: "₹15,000 - ₹25,000",
+    irrigationNeeded: false,
+    droughtTolerance: "High",
+    diseases: ["Grain Mold", "Downy Mildew", "Anthracnose", "Rust", "Charcoal Rot"],
+  },
+  {
+    name: "Bajra (Pearl Millet)",
+    season: ["kharif"],
+    states: ["Rajasthan", "Maharashtra", "Gujarat", "Uttar Pradesh", "Haryana", "Karnataka", "Madhya Pradesh"],
+    soilTypes: ["Sandy Soil", "Red Soil", "Loamy Soil"],
+    minTemp: 25, maxTemp: 42,
+    minRainfall: 25, maxRainfall: 80,
+    minHumidity: 25, maxHumidity: 60,
+    minPh: 6.5, maxPh: 8.0,
+    nitrogenReq: "Medium", phosphorusReq: "Low", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 85,
+    yieldPerAcre: "8-12 quintals",
+    profitPerAcre: "₹12,000 - ₹22,000",
+    irrigationNeeded: false,
+    droughtTolerance: "High",
+    diseases: ["Downy Mildew", "Ergot", "Smut", "Blast", "Rust"],
+  },
+  // ===== RABI CROPS =====
+  {
+    name: "Wheat",
+    season: ["rabi"],
+    states: ["Uttar Pradesh", "Punjab", "Haryana", "Madhya Pradesh", "Rajasthan", "Bihar", "Gujarat", "Maharashtra"],
+    soilTypes: ["Loamy Soil", "Clay Soil", "Black Soil"],
+    minTemp: 10, maxTemp: 25,
+    minRainfall: 50, maxRainfall: 120,
+    minHumidity: 40, maxHumidity: 70,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "High", phosphorusReq: "Medium", potassiumReq: "Low",
+    waterReq: "Medium",
+    growingDays: 135,
+    yieldPerAcre: "15-20 quintals",
+    profitPerAcre: "₹22,000 - ₹38,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Rust", "Powdery Mildew", "Loose Smut", "Karnal Bunt", "Leaf Blight"],
+  },
+  {
+    name: "Mustard",
+    season: ["rabi"],
+    states: ["Rajasthan", "Uttar Pradesh", "Madhya Pradesh", "Haryana", "Gujarat", "West Bengal"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Clay Soil"],
+    minTemp: 10, maxTemp: 25,
+    minRainfall: 30, maxRainfall: 80,
+    minHumidity: 35, maxHumidity: 65,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Medium", phosphorusReq: "High", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 120,
+    yieldPerAcre: "6-10 quintals",
+    profitPerAcre: "₹20,000 - ₹40,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["White Rust", "Alternaria Blight", "Downy Mildew", "Powdery Mildew", "Sclerotinia Rot"],
+  },
+  {
+    name: "Chickpea (Gram)",
+    season: ["rabi"],
+    states: ["Madhya Pradesh", "Rajasthan", "Maharashtra", "Uttar Pradesh", "Karnataka", "Andhra Pradesh", "Chhattisgarh"],
+    soilTypes: ["Loamy Soil", "Black Soil", "Sandy Soil"],
+    minTemp: 10, maxTemp: 30,
+    minRainfall: 30, maxRainfall: 90,
+    minHumidity: 30, maxHumidity: 60,
+    minPh: 6.0, maxPh: 8.0,
+    nitrogenReq: "Low", phosphorusReq: "Medium", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 100,
+    yieldPerAcre: "6-10 quintals",
+    profitPerAcre: "₹18,000 - ₹35,000",
+    irrigationNeeded: false,
+    droughtTolerance: "High",
+    diseases: ["Wilt", "Blight", "Root Rot", "Stunt", "Grey Mold"],
+  },
+  {
+    name: "Barley",
+    season: ["rabi"],
+    states: ["Rajasthan", "Uttar Pradesh", "Madhya Pradesh", "Haryana", "Punjab", "Bihar"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Clay Soil"],
+    minTemp: 8, maxTemp: 22,
+    minRainfall: 30, maxRainfall: 80,
+    minHumidity: 30, maxHumidity: 60,
+    minPh: 6.0, maxPh: 8.5,
+    nitrogenReq: "Medium", phosphorusReq: "Low", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 130,
+    yieldPerAcre: "12-18 quintals",
+    profitPerAcre: "₹15,000 - ₹25,000",
+    irrigationNeeded: false,
+    droughtTolerance: "High",
+    diseases: ["Stripe Rust", "Powdery Mildew", "Spot Blotch", "Loose Smut", "Net Blotch"],
+  },
+  {
+    name: "Lentil (Masoor)",
+    season: ["rabi"],
+    states: ["Uttar Pradesh", "Madhya Pradesh", "Bihar", "West Bengal", "Jharkhand", "Chhattisgarh"],
+    soilTypes: ["Loamy Soil", "Clay Soil", "Black Soil"],
+    minTemp: 10, maxTemp: 28,
+    minRainfall: 30, maxRainfall: 80,
+    minHumidity: 35, maxHumidity: 65,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Low", phosphorusReq: "Medium", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 110,
+    yieldPerAcre: "5-8 quintals",
+    profitPerAcre: "₹15,000 - ₹30,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["Wilt", "Rust", "Root Rot", "Blight", "Powdery Mildew"],
+  },
+  {
+    name: "Peas",
+    season: ["rabi"],
+    states: ["Uttar Pradesh", "Madhya Pradesh", "Punjab", "Bihar", "Jharkhand", "Himachal Pradesh"],
+    soilTypes: ["Loamy Soil", "Clay Soil", "Sandy Soil"],
+    minTemp: 8, maxTemp: 22,
+    minRainfall: 40, maxRainfall: 100,
+    minHumidity: 40, maxHumidity: 70,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Low", phosphorusReq: "Medium", potassiumReq: "Medium",
+    waterReq: "Medium",
+    growingDays: 90,
+    yieldPerAcre: "30-50 quintals",
+    profitPerAcre: "₹25,000 - ₹50,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Powdery Mildew", "Downy Mildew", "Rust", "Wilt", "Root Rot"],
+  },
+  {
+    name: "Potato",
+    season: ["rabi", "autumn"],
+    states: ["Uttar Pradesh", "West Bengal", "Bihar", "Gujarat", "Madhya Pradesh", "Punjab", "Jharkhand"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Red Soil"],
+    minTemp: 12, maxTemp: 25,
+    minRainfall: 50, maxRainfall: 120,
+    minHumidity: 50, maxHumidity: 80,
+    minPh: 5.0, maxPh: 6.5,
+    nitrogenReq: "High", phosphorusReq: "High", potassiumReq: "High",
+    waterReq: "Medium",
+    growingDays: 90,
+    yieldPerAcre: "80-120 quintals",
+    profitPerAcre: "₹30,000 - ₹60,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Late Blight", "Early Blight", "Black Scurf", "Wart", "Brown Rot"],
+  },
+  // ===== SUMMER CROPS =====
+  {
+    name: "Watermelon",
+    season: ["summer", "zaid"],
+    states: ["Rajasthan", "Karnataka", "Andhra Pradesh", "Tamil Nadu", "Uttar Pradesh", "Maharashtra", "Gujarat"],
+    soilTypes: ["Sandy Soil", "Loamy Soil", "Red Soil"],
+    minTemp: 25, maxTemp: 42,
+    minRainfall: 20, maxRainfall: 60,
+    minHumidity: 30, maxHumidity: 65,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "High",
+    growingDays: 80,
+    yieldPerAcre: "80-150 quintals",
+    profitPerAcre: "₹40,000 - ₹80,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Fusarium Wilt", "Downy Mildew", "Anthracnose", "Powdery Mildew", "Mosaic Virus"],
+  },
+  {
+    name: "Cucumber",
+    season: ["summer", "zaid"],
+    states: ["Uttar Pradesh", "Haryana", "Punjab", "Karnataka", "Andhra Pradesh", "Tamil Nadu", "Maharashtra"],
+    soilTypes: ["Loamy Soil", "Sandy Soil"],
+    minTemp: 20, maxTemp: 38,
+    minRainfall: 25, maxRainfall: 70,
+    minHumidity: 40, maxHumidity: 75,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "Medium",
+    waterReq: "Medium",
+    growingDays: 55,
+    yieldPerAcre: "40-80 quintals",
+    profitPerAcre: "₹30,000 - ₹60,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Downy Mildew", "Powdery Mildew", "Mosaic Virus", "Angular Leaf Spot", "Anthracnose"],
+  },
+  {
+    name: "Muskmelon",
+    season: ["summer"],
+    states: ["Rajasthan", "Punjab", "Uttar Pradesh", "Gujarat", "Madhya Pradesh"],
+    soilTypes: ["Sandy Soil", "Loamy Soil"],
+    minTemp: 25, maxTemp: 40,
+    minRainfall: 20, maxRainfall: 50,
+    minHumidity: 30, maxHumidity: 60,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "High",
+    growingDays: 75,
+    yieldPerAcre: "50-100 quintals",
+    profitPerAcre: "₹35,000 - ₹70,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Fusarium Wilt", "Powdery Mildew", "Downy Mildew", "Fruit Fly", "Mosaic Virus"],
+  },
+  {
+    name: "Sunflower",
+    season: ["summer", "kharif"],
+    states: ["Karnataka", "Andhra Pradesh", "Maharashtra", "Tamil Nadu", "Odisha"],
+    soilTypes: ["Black Soil", "Loamy Soil", "Red Soil"],
+    minTemp: 20, maxTemp: 35,
+    minRainfall: 40, maxRainfall: 100,
+    minHumidity: 40, maxHumidity: 70,
+    minPh: 6.5, maxPh: 8.0,
+    nitrogenReq: "Medium", phosphorusReq: "High", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 90,
+    yieldPerAcre: "5-8 quintals",
+    profitPerAcre: "₹15,000 - ₹28,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["Rust", "Downy Mildew", "Alternaria Blight", "Head Rot", "Powdery Mildew"],
+  },
+  {
+    name: "Moong (Green Gram)",
+    season: ["summer", "kharif", "zaid"],
+    states: ["Rajasthan", "Maharashtra", "Andhra Pradesh", "Karnataka", "Madhya Pradesh", "Uttar Pradesh", "Tamil Nadu"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Red Soil"],
+    minTemp: 25, maxTemp: 40,
+    minRainfall: 30, maxRainfall: 80,
+    minHumidity: 35, maxHumidity: 65,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Low", phosphorusReq: "Medium", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 65,
+    yieldPerAcre: "4-6 quintals",
+    profitPerAcre: "₹15,000 - ₹30,000",
+    irrigationNeeded: false,
+    droughtTolerance: "High",
+    diseases: ["Yellow Mosaic", "Powdery Mildew", "Cercospora Leaf Spot", "Root Rot", "Anthracnose"],
+  },
+  {
+    name: "Sesame (Til)",
+    season: ["summer", "kharif"],
+    states: ["Rajasthan", "West Bengal", "Madhya Pradesh", "Gujarat", "Tamil Nadu", "Uttar Pradesh"],
+    soilTypes: ["Sandy Soil", "Loamy Soil", "Red Soil"],
+    minTemp: 25, maxTemp: 40,
+    minRainfall: 30, maxRainfall: 70,
+    minHumidity: 30, maxHumidity: 60,
+    minPh: 5.5, maxPh: 8.0,
+    nitrogenReq: "Low", phosphorusReq: "Medium", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 90,
+    yieldPerAcre: "3-5 quintals",
+    profitPerAcre: "₹15,000 - ₹35,000",
+    irrigationNeeded: false,
+    droughtTolerance: "High",
+    diseases: ["Phyllody", "Leaf Spot", "Root Rot", "Wilt", "Powdery Mildew"],
+  },
+  // ===== ZAID CROPS =====
+  {
+    name: "Urad (Black Gram)",
+    season: ["zaid", "kharif"],
+    states: ["Madhya Pradesh", "Uttar Pradesh", "Rajasthan", "Andhra Pradesh", "Tamil Nadu", "Maharashtra"],
+    soilTypes: ["Loamy Soil", "Black Soil", "Sandy Soil"],
+    minTemp: 25, maxTemp: 38,
+    minRainfall: 30, maxRainfall: 80,
+    minHumidity: 40, maxHumidity: 70,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Low", phosphorusReq: "Medium", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 70,
+    yieldPerAcre: "4-6 quintals",
+    profitPerAcre: "₹15,000 - ₹28,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["Yellow Mosaic", "Powdery Mildew", "Leaf Spot", "Root Rot", "Anthracnose"],
+  },
+  {
+    name: "Pumpkin",
+    season: ["zaid", "summer"],
+    states: ["Uttar Pradesh", "Madhya Pradesh", "Bihar", "Odisha", "West Bengal", "Assam"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Clay Soil"],
+    minTemp: 22, maxTemp: 38,
+    minRainfall: 30, maxRainfall: 80,
+    minHumidity: 40, maxHumidity: 75,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "Medium",
+    waterReq: "Medium",
+    growingDays: 100,
+    yieldPerAcre: "60-100 quintals",
+    profitPerAcre: "₹20,000 - ₹45,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Powdery Mildew", "Downy Mildew", "Fruit Fly", "Mosaic Virus", "Anthracnose"],
+  },
+  {
+    name: "Bitter Gourd",
+    season: ["zaid", "summer"],
+    states: ["Uttar Pradesh", "Bihar", "Odisha", "Andhra Pradesh", "Kerala", "Tamil Nadu"],
+    soilTypes: ["Loamy Soil", "Sandy Soil"],
+    minTemp: 24, maxTemp: 38,
+    minRainfall: 30, maxRainfall: 80,
+    minHumidity: 40, maxHumidity: 75,
+    minPh: 6.0, maxPh: 7.0,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "Medium",
+    waterReq: "Medium",
+    growingDays: 55,
+    yieldPerAcre: "30-60 quintals",
+    profitPerAcre: "₹25,000 - ₹55,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Powdery Mildew", "Downy Mildew", "Fruit Fly", "Leaf Spot", "Mosaic Virus"],
+  },
+  // ===== WHOLE YEAR CROPS =====
+  {
+    name: "Banana",
+    season: ["wholeYear"],
+    states: ["Tamil Nadu", "Maharashtra", "Gujarat", "Andhra Pradesh", "Karnataka", "Kerala", "Bihar", "West Bengal", "Madhya Pradesh"],
+    soilTypes: ["Loamy Soil", "Clay Soil", "Red Soil"],
+    minTemp: 20, maxTemp: 38,
+    minRainfall: 100, maxRainfall: 250,
+    minHumidity: 60, maxHumidity: 90,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "High", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "High",
+    growingDays: 300,
+    yieldPerAcre: "200-350 quintals",
+    profitPerAcre: "₹80,000 - ₹2,00,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Panama Wilt", "Sigatoka Leaf Spot", "Bunchy Top", "Bacterial Wilt", "Anthracnose"],
+  },
+  {
+    name: "Papaya",
+    season: ["wholeYear"],
+    states: ["Andhra Pradesh", "Gujarat", "Karnataka", "Maharashtra", "West Bengal", "Tamil Nadu", "Madhya Pradesh"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Red Soil"],
+    minTemp: 22, maxTemp: 38,
+    minRainfall: 80, maxRainfall: 200,
+    minHumidity: 50, maxHumidity: 80,
+    minPh: 6.0, maxPh: 7.0,
+    nitrogenReq: "High", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "Medium",
+    growingDays: 270,
+    yieldPerAcre: "150-250 quintals",
+    profitPerAcre: "₹60,000 - ₹1,50,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Papaya Ring Spot Virus", "Powdery Mildew", "Anthracnose", "Root Rot", "Leaf Curl"],
+  },
+  {
+    name: "Coconut",
+    season: ["wholeYear"],
+    states: ["Kerala", "Tamil Nadu", "Karnataka", "Andhra Pradesh", "Goa", "Maharashtra", "West Bengal"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Red Soil", "Clay Soil"],
+    minTemp: 20, maxTemp: 35,
+    minRainfall: 120, maxRainfall: 300,
+    minHumidity: 60, maxHumidity: 90,
+    minPh: 5.5, maxPh: 7.0,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "Medium",
+    growingDays: 365,
+    yieldPerAcre: "60-80 nuts/palm/year",
+    profitPerAcre: "₹40,000 - ₹80,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["Bud Rot", "Root Wilt", "Leaf Blight", "Stem Bleeding", "Grey Leaf Spot"],
+  },
+  {
+    name: "Turmeric",
+    season: ["wholeYear", "kharif"],
+    states: ["Telangana", "Andhra Pradesh", "Tamil Nadu", "Karnataka", "Maharashtra", "Odisha", "West Bengal"],
+    soilTypes: ["Loamy Soil", "Clay Soil", "Red Soil"],
+    minTemp: 20, maxTemp: 35,
+    minRainfall: 100, maxRainfall: 200,
+    minHumidity: 60, maxHumidity: 85,
+    minPh: 5.5, maxPh: 7.5,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "Medium",
+    growingDays: 240,
+    yieldPerAcre: "8-12 quintals (dry)",
+    profitPerAcre: "₹50,000 - ₹1,00,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Rhizome Rot", "Leaf Spot", "Leaf Blotch", "Nematode", "Anthracnose"],
+  },
+  {
+    name: "Ginger",
+    season: ["wholeYear", "kharif"],
+    states: ["Kerala", "Karnataka", "Meghalaya", "Assam", "Arunachal Pradesh", "Sikkim", "Odisha"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Red Soil"],
+    minTemp: 20, maxTemp: 35,
+    minRainfall: 150, maxRainfall: 300,
+    minHumidity: 60, maxHumidity: 90,
+    minPh: 5.5, maxPh: 6.5,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "Medium",
+    growingDays: 240,
+    yieldPerAcre: "60-80 quintals (fresh)",
+    profitPerAcre: "₹50,000 - ₹1,20,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Soft Rot", "Bacterial Wilt", "Leaf Spot", "Phyllosticta", "Rhizome Rot"],
+  },
+  // ===== AUTUMN CROPS =====
+  {
+    name: "Rapeseed",
+    season: ["autumn", "rabi"],
+    states: ["West Bengal", "Assam", "Bihar", "Uttar Pradesh", "Odisha"],
+    soilTypes: ["Loamy Soil", "Clay Soil", "Sandy Soil"],
+    minTemp: 10, maxTemp: 25,
+    minRainfall: 40, maxRainfall: 100,
+    minHumidity: 40, maxHumidity: 70,
+    minPh: 5.5, maxPh: 7.5,
+    nitrogenReq: "Medium", phosphorusReq: "High", potassiumReq: "Low",
+    waterReq: "Low",
+    growingDays: 110,
+    yieldPerAcre: "5-8 quintals",
+    profitPerAcre: "₹18,000 - ₹32,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Medium",
+    diseases: ["White Rust", "Alternaria Blight", "Sclerotinia Rot", "Downy Mildew", "Powdery Mildew"],
+  },
+  // ===== ADDITIONAL CROPS =====
+  {
+    name: "Jute",
+    season: ["kharif"],
+    states: ["West Bengal", "Bihar", "Assam", "Odisha", "Andhra Pradesh", "Meghalaya", "Tripura"],
+    soilTypes: ["Loamy Soil", "Clay Soil"],
+    minTemp: 24, maxTemp: 37,
+    minRainfall: 150, maxRainfall: 300,
+    minHumidity: 70, maxHumidity: 95,
+    minPh: 5.5, maxPh: 7.0,
+    nitrogenReq: "Medium", phosphorusReq: "Low", potassiumReq: "Medium",
+    waterReq: "High",
+    growingDays: 120,
+    yieldPerAcre: "20-25 quintals",
+    profitPerAcre: "₹25,000 - ₹40,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Low",
+    diseases: ["Stem Rot", "Root Rot", "Anthracnose", "Soft Rot", "Mosaic"],
+  },
+  {
+    name: "Tea",
+    season: ["wholeYear"],
+    states: ["Assam", "West Bengal", "Tamil Nadu", "Kerala", "Karnataka", "Tripura", "Meghalaya", "Himachal Pradesh"],
+    soilTypes: ["Loamy Soil", "Red Soil"],
+    minTemp: 15, maxTemp: 30,
+    minRainfall: 150, maxRainfall: 350,
+    minHumidity: 70, maxHumidity: 95,
+    minPh: 4.5, maxPh: 5.5,
+    nitrogenReq: "High", phosphorusReq: "Medium", potassiumReq: "Medium",
+    waterReq: "High",
+    growingDays: 365,
+    yieldPerAcre: "6-10 quintals (dry)",
+    profitPerAcre: "₹50,000 - ₹1,20,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Low",
+    diseases: ["Blister Blight", "Red Rust", "Grey Blight", "Black Rot", "Root Disease"],
+  },
+  {
+    name: "Coffee",
+    season: ["wholeYear"],
+    states: ["Karnataka", "Kerala", "Tamil Nadu", "Andhra Pradesh", "Odisha"],
+    soilTypes: ["Loamy Soil", "Red Soil", "Sandy Soil"],
+    minTemp: 15, maxTemp: 28,
+    minRainfall: 150, maxRainfall: 300,
+    minHumidity: 60, maxHumidity: 90,
+    minPh: 5.0, maxPh: 6.5,
+    nitrogenReq: "High", phosphorusReq: "Medium", potassiumReq: "High",
+    waterReq: "Medium",
+    growingDays: 365,
+    yieldPerAcre: "3-5 quintals (clean coffee)",
+    profitPerAcre: "₹60,000 - ₹1,50,000",
+    irrigationNeeded: false,
+    droughtTolerance: "Low",
+    diseases: ["Coffee Rust", "Black Rot", "Berry Borer", "Root Disease", "Die-Back"],
+  },
+  {
+    name: "Onion",
+    season: ["rabi", "kharif"],
+    states: ["Maharashtra", "Karnataka", "Madhya Pradesh", "Gujarat", "Bihar", "Rajasthan", "Andhra Pradesh"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Red Soil"],
+    minTemp: 13, maxTemp: 30,
+    minRainfall: 40, maxRainfall: 100,
+    minHumidity: 40, maxHumidity: 70,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "Medium", phosphorusReq: "Medium", potassiumReq: "Medium",
+    waterReq: "Medium",
+    growingDays: 120,
+    yieldPerAcre: "80-120 quintals",
+    profitPerAcre: "₹30,000 - ₹1,00,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Purple Blotch", "Stemphylium Blight", "Downy Mildew", "Thrips", "Basal Rot"],
+  },
+  {
+    name: "Tomato",
+    season: ["rabi", "kharif"],
+    states: ["Andhra Pradesh", "Madhya Pradesh", "Karnataka", "Odisha", "Gujarat", "West Bengal", "Bihar", "Maharashtra"],
+    soilTypes: ["Loamy Soil", "Sandy Soil", "Red Soil"],
+    minTemp: 15, maxTemp: 35,
+    minRainfall: 40, maxRainfall: 120,
+    minHumidity: 40, maxHumidity: 75,
+    minPh: 6.0, maxPh: 7.5,
+    nitrogenReq: "High", phosphorusReq: "High", potassiumReq: "High",
+    waterReq: "Medium",
+    growingDays: 75,
+    yieldPerAcre: "100-200 quintals",
+    profitPerAcre: "₹40,000 - ₹1,50,000",
+    irrigationNeeded: true,
+    droughtTolerance: "Low",
+    diseases: ["Early Blight", "Late Blight", "Leaf Curl", "Bacterial Wilt", "Fusarium Wilt"],
+  },
+];
+// Fertilizer Recommendation Dataset
+export interface FertilizerData {
+  name: string;
+  npkRatio: string;
+  bestFor: string[];
+  soilTypes: string[];
+  application: string;
+  dosagePerAcre: string;
+  costPerKg: string;
+  organic: boolean;
+}
+export const fertilizerDataset: FertilizerData[] = [
+  {
+    name: "Urea",
+    npkRatio: "46-0-0",
+    bestFor: ["Rice", "Wheat", "Maize", "Sugarcane", "Cotton"],
+    soilTypes: ["All"],
+    application: "Top dressing in 2-3 splits during vegetative growth",
+    dosagePerAcre: "40-60 kg",
+    costPerKg: "₹6-8",
+    organic: false,
+  },
+  {
+    name: "DAP (Di-Ammonium Phosphate)",
+    npkRatio: "18-46-0",
+    bestFor: ["Wheat", "Rice", "Maize", "Potato", "Tomato", "Onion"],
+    soilTypes: ["All"],
+    application: "Basal application at sowing/transplanting",
+    dosagePerAcre: "50-75 kg",
+    costPerKg: "₹27-30",
+    organic: false,
+  },
+  {
+    name: "MOP (Muriate of Potash)",
+    npkRatio: "0-0-60",
+    bestFor: ["Banana", "Potato", "Sugarcane", "Cotton", "Tomato"],
+    soilTypes: ["All except saline"],
+    application: "Basal or split application",
+    dosagePerAcre: "30-50 kg",
+    costPerKg: "₹17-20",
+    organic: false,
+  },
+  {
+    name: "NPK Complex 10-26-26",
+    npkRatio: "10-26-26",
+    bestFor: ["Groundnut", "Soybean", "Chickpea", "Lentil"],
+    soilTypes: ["All"],
+    application: "Basal application",
+    dosagePerAcre: "50-75 kg",
+    costPerKg: "₹25-28",
+    organic: false,
+  },
+  {
+    name: "SSP (Single Super Phosphate)",
+    npkRatio: "0-16-0 + 11% Sulphur",
+    bestFor: ["Groundnut", "Mustard", "Soybean", "Onion"],
+    soilTypes: ["All"],
+    application: "Basal application",
+    dosagePerAcre: "100-125 kg",
+    costPerKg: "₹8-10",
+    organic: false,
+  },
+  {
+    name: "Ammonium Sulphate",
+    npkRatio: "21-0-0 + 24% Sulphur",
+    bestFor: ["Tea", "Coffee", "Paddy", "Sugarcane"],
+    soilTypes: ["Alkaline Soil"],
+    application: "Top dressing",
+    dosagePerAcre: "50-75 kg",
+    costPerKg: "₹12-15",
+    organic: false,
+  },
+  {
+    name: "Zinc Sulphate",
+    npkRatio: "Micronutrient (33% Zn)",
+    bestFor: ["Rice", "Wheat", "Maize", "Potato"],
+    soilTypes: ["Zinc-deficient soils"],
+    application: "Basal or foliar spray",
+    dosagePerAcre: "10-12 kg",
+    costPerKg: "₹40-50",
+    organic: false,
+  },
+  {
+    name: "Borax",
+    npkRatio: "Micronutrient (11% B)",
+    bestFor: ["Mustard", "Sunflower", "Cotton", "Groundnut"],
+    soilTypes: ["Boron-deficient soils"],
+    application: "Basal or foliar spray",
+    dosagePerAcre: "4-5 kg",
+    costPerKg: "₹55-65",
+    organic: false,
+  },
+  {
+    name: "Vermicompost",
+    npkRatio: "1.5-0.5-0.5",
+    bestFor: ["All crops"],
+    soilTypes: ["All"],
+    application: "Apply 15-20 days before sowing, mix with soil",
+    dosagePerAcre: "2000-4000 kg",
+    costPerKg: "₹5-8",
+    organic: true,
+  },
+  {
+    name: "FYM (Farm Yard Manure)",
+    npkRatio: "0.5-0.2-0.5",
+    bestFor: ["All crops"],
+    soilTypes: ["All"],
+    application: "Apply 3-4 weeks before sowing",
+    dosagePerAcre: "4000-8000 kg",
+    costPerKg: "₹2-3",
+    organic: true,
+  },
+  {
+    name: "Neem Cake",
+    npkRatio: "5-1-1",
+    bestFor: ["Sugarcane", "Banana", "Turmeric", "Ginger", "Vegetables"],
+    soilTypes: ["All"],
+    application: "Basal application, also acts as pest deterrent",
+    dosagePerAcre: "200-400 kg",
+    costPerKg: "₹12-18",
+    organic: true,
+  },
+  {
+    name: "Bone Meal",
+    npkRatio: "3-15-0",
+    bestFor: ["Fruit trees", "Coconut", "Banana", "Papaya"],
+    soilTypes: ["Acidic soils"],
+    application: "Basal application in planting holes",
+    dosagePerAcre: "200-300 kg",
+    costPerKg: "₹15-20",
+    organic: true,
+  },
+];
+// Crop Disease Detection & Treatment Dataset
+export interface DiseaseData {
+  name: string;
+  affectedCrops: string[];
+  symptoms: string[];
+  causes: string;
+  treatment: string[];
+  prevention: string[];
+  severity: "Low" | "Medium" | "High";
+  season: string[];
+}
+export const diseaseDataset: DiseaseData[] = [
+  // ===== RICE DISEASES =====
+  {
+    name: "Rice Blast",
+    affectedCrops: ["Rice"],
+    symptoms: ["Diamond-shaped lesions on leaves", "Neck rot at panicle base", "Grey-green spots turning white"],
+    causes: "Fungus Magnaporthe oryzae, spread by wind and rain",
+    treatment: ["Tricyclazole 75% WP (0.6 g/L spray)", "Isoprothiolane 40% EC", "Kasugamycin 3% SL"],
+    prevention: ["Use resistant varieties (Pusa Basmati 1509)", "Avoid excess nitrogen", "Maintain proper spacing"],
+    severity: "High",
+    season: ["kharif"],
+  },
+  {
+    name: "Bacterial Leaf Blight",
+    affectedCrops: ["Rice"],
+    symptoms: ["Yellow to white lesions along leaf veins", "Wilting of seedlings", "Milky ooze from cut leaves"],
+    causes: "Bacterium Xanthomonas oryzae, waterborne",
+    treatment: ["Streptocycline (1 g/10L water)", "Copper oxychloride 50% WP", "Drain excess water"],
+    prevention: ["Use certified disease-free seeds", "Balanced fertilization", "Proper drainage"],
+    severity: "High",
+    season: ["kharif"],
+  },
+  {
+    name: "Sheath Blight",
+    affectedCrops: ["Rice"],
+    symptoms: ["Oval/irregular greenish-grey lesions on sheath", "Lesions merge and spread upward", "Lodging in severe cases"],
+    causes: "Fungus Rhizoctonia solani",
+    treatment: ["Hexaconazole 5% EC", "Validamycin 3% SL", "Propiconazole 25% EC"],
+    prevention: ["Avoid dense planting", "Remove crop residues", "Use silicon fertilizer"],
+    severity: "Medium",
+    season: ["kharif"],
+  },
+  // ===== WHEAT DISEASES =====
+  {
+    name: "Wheat Rust (Yellow/Brown/Black)",
+    affectedCrops: ["Wheat", "Barley"],
+    symptoms: ["Orange-brown pustules on leaves/stems", "Yellow striped patterns (stripe rust)", "Reduced grain filling"],
+    causes: "Fungus Puccinia spp., airborne spores",
+    treatment: ["Propiconazole 25% EC (1 mL/L)", "Tebuconazole 250 EC", "Mancozeb 75% WP"],
+    prevention: ["Grow resistant varieties (HD 3226, DBW 187)", "Timely sowing", "Avoid late nitrogen application"],
+    severity: "High",
+    season: ["rabi"],
+  },
+  {
+    name: "Powdery Mildew",
+    affectedCrops: ["Wheat", "Peas", "Mustard", "Muskmelon", "Cucumber"],
+    symptoms: ["White powdery coating on leaves", "Leaves curl and yellow", "Stunted growth"],
+    causes: "Fungus Erysiphe graminis / Blumeria graminis",
+    treatment: ["Sulphur 80% WP (3 g/L)", "Karathane 40% EC", "Hexaconazole 5% EC"],
+    prevention: ["Avoid overcrowding", "Ensure air circulation", "Use resistant varieties"],
+    severity: "Medium",
+    season: ["rabi", "summer"],
+  },
+  {
+    name: "Karnal Bunt",
+    affectedCrops: ["Wheat"],
+    symptoms: ["Partial bunting of grains", "Fishy smell from infected grains", "Black powder inside grain"],
+    causes: "Fungus Tilletia indica",
+    treatment: ["Seed treatment with Carboxin + Thiram", "Propiconazole spray at heading"],
+    prevention: ["Use certified seeds", "Avoid late sowing", "Crop rotation"],
+    severity: "Medium",
+    season: ["rabi"],
+  },
+  // ===== COTTON DISEASES =====
+  {
+    name: "Cotton Leaf Curl Virus",
+    affectedCrops: ["Cotton"],
+    symptoms: ["Upward/downward curling of leaves", "Vein thickening and darkening", "Stunted plants with reduced bolls"],
+    causes: "Begomovirus, transmitted by whitefly (Bemisia tabaci)",
+    treatment: ["Control whitefly with Imidacloprid 200 SL", "Thiamethoxam 25% WG", "Remove infected plants"],
+    prevention: ["Use resistant varieties (non-BGII)", "Early sowing", "Destroy ratoon cotton"],
+    severity: "High",
+    season: ["kharif"],
+  },
+  {
+    name: "Boll Rot",
+    affectedCrops: ["Cotton"],
+    symptoms: ["Rotting of bolls", "Black or brown discoloration", "Reduced fiber quality"],
+    causes: "Complex of fungi and bacteria, favored by rain and humidity",
+    treatment: ["Copper oxychloride spray", "Carbendazim 50% WP", "Improve drainage"],
+    prevention: ["Proper spacing", "Balanced NPK", "Avoid waterlogging"],
+    severity: "Medium",
+    season: ["kharif"],
+  },
+  // ===== TOMATO/VEGETABLE DISEASES =====
+  {
+    name: "Late Blight",
+    affectedCrops: ["Potato", "Tomato"],
+    symptoms: ["Water-soaked dark lesions on leaves", "White fuzzy growth on leaf underside", "Rapid plant death in humid conditions"],
+    causes: "Oomycete Phytophthora infestans",
+    treatment: ["Mancozeb 75% WP (2.5 g/L)", "Metalaxyl + Mancozeb", "Cymoxanil + Mancozeb"],
+    prevention: ["Use certified disease-free seed", "Avoid overhead irrigation", "Remove volunteer plants"],
+    severity: "High",
+    season: ["rabi", "kharif"],
+  },
+  {
+    name: "Early Blight",
+    affectedCrops: ["Potato", "Tomato"],
+    symptoms: ["Concentric ring-shaped lesions (target spots)", "Lower leaves affected first", "Premature defoliation"],
+    causes: "Fungus Alternaria solani",
+    treatment: ["Mancozeb 75% WP", "Chlorothalonil 75% WP", "Azoxystrobin 23% SC"],
+    prevention: ["Crop rotation (3 years)", "Remove infected plant debris", "Adequate spacing"],
+    severity: "Medium",
+    season: ["rabi", "kharif"],
+  },
+  {
+    name: "Bacterial Wilt",
+    affectedCrops: ["Tomato", "Potato", "Banana", "Ginger"],
+    symptoms: ["Sudden wilting without yellowing", "Brown discoloration of vascular tissue", "Bacterial ooze test positive"],
+    causes: "Bacterium Ralstonia solanacearum, soilborne",
+    treatment: ["No effective chemical cure", "Remove and destroy infected plants", "Soil solarization"],
+    prevention: ["Use resistant varieties", "Crop rotation with non-host", "Lime application to raise pH"],
+    severity: "High",
+    season: ["kharif", "summer"],
+  },
+  // ===== PULSE DISEASES =====
+  {
+    name: "Yellow Mosaic Virus",
+    affectedCrops: ["Moong (Green Gram)", "Urad (Black Gram)", "Soybean"],
+    symptoms: ["Bright yellow patches on leaves", "Reduced pod formation", "Stunted growth"],
+    causes: "Mungbean Yellow Mosaic India Virus (MYMIV), whitefly-transmitted",
+    treatment: ["Imidacloprid 200 SL (0.5 mL/L) for vector", "Dimethoate 30 EC", "Remove infected plants"],
+    prevention: ["Use resistant varieties (IPM series)", "Early sowing", "Intercropping with cereals"],
+    severity: "High",
+    season: ["kharif", "zaid"],
+  },
+  {
+    name: "Fusarium Wilt",
+    affectedCrops: ["Chickpea (Gram)", "Banana", "Tomato", "Watermelon"],
+    symptoms: ["Yellowing and wilting of leaves from base", "Brown vascular discoloration", "Plant death within days"],
+    causes: "Fungus Fusarium oxysporum, soilborne",
+    treatment: ["Seed treatment with Carbendazim + Thiram", "Trichoderma viride soil application", "Soil drenching with fungicide"],
+    prevention: ["Long crop rotation (4-5 years)", "Use resistant varieties", "Deep summer plowing"],
+    severity: "High",
+    season: ["rabi", "kharif"],
+  },
+  // ===== SUGARCANE DISEASES =====
+  {
+    name: "Red Rot",
+    affectedCrops: ["Sugarcane"],
+    symptoms: ["Red discoloration inside stalks", "White patches within red tissue", "Drying of crown leaves"],
+    causes: "Fungus Colletotrichum falcatum",
+    treatment: ["No effective chemical control", "Hot water treatment of seed cane (52°C, 30 min)", "Remove infected clumps"],
+    prevention: ["Use disease-free seed material", "Resistant varieties (Co 0238, CoLk 94184)", "Crop rotation"],
+    severity: "High",
+    season: ["kharif", "wholeYear"],
+  },
+  {
+    name: "Smut",
+    affectedCrops: ["Sugarcane", "Wheat", "Bajra (Pearl Millet)", "Maize"],
+    symptoms: ["Black whip-like structure from growing point", "Stunted growth", "Side shooting"],
+    causes: "Fungus Sporisorium scitamineum",
+    treatment: ["Hot water treatment of seed cane", "Propiconazole sett treatment", "Rogue infected plants"],
+    prevention: ["Use healthy planting material", "Resistant varieties", "Avoid ratooning infected fields"],
+    severity: "Medium",
+    season: ["kharif", "wholeYear"],
+  },
+  // ===== FRUIT DISEASES =====
+  {
+    name: "Panama Wilt (Banana)",
+    affectedCrops: ["Banana"],
+    symptoms: ["Yellowing of older leaves from margin", "Splitting of pseudostem base", "Brown vascular discoloration"],
+    causes: "Fungus Fusarium oxysporum f.sp. cubense",
+    treatment: ["No effective chemical control", "Carbendazim drench (partial)", "Pseudomonas fluorescens application"],
+    prevention: ["Use tissue culture plants", "Avoid planting in infected fields", "Grow resistant varieties (Poovan, Ney Poovan)"],
+    severity: "High",
+    season: ["wholeYear"],
+  },
+  {
+    name: "Anthracnose",
+    affectedCrops: ["Papaya", "Banana", "Mango", "Bitter Gourd", "Watermelon"],
+    symptoms: ["Dark sunken spots on fruits", "Salmon-pink spore masses", "Leaf spots and die-back"],
+    causes: "Fungus Colletotrichum gloeosporioides",
+    treatment: ["Carbendazim 50% WP (1 g/L)", "Mancozeb 75% WP", "Copper oxychloride"],
+    prevention: ["Post-harvest hot water treatment (52°C, 10 min)", "Avoid injury during harvest", "Good field sanitation"],
+    severity: "Medium",
+    season: ["kharif", "summer", "wholeYear"],
+  },
+  // ===== GENERAL LEAF DISEASES =====
+  {
+    name: "Leaf Spot",
+    affectedCrops: ["Groundnut", "Soybean", "Sesame (Til)", "Turmeric", "Ginger"],
+    symptoms: ["Circular brown/black spots on leaves", "Spots may have yellow halo", "Premature leaf drop"],
+    causes: "Various fungi (Cercospora, Alternaria, Helminthosporium)",
+    treatment: ["Mancozeb 75% WP (2.5 g/L)", "Carbendazim 50% WP", "Chlorothalonil 75% WP"],
+    prevention: ["Crop rotation", "Remove infected debris", "Avoid overhead irrigation"],
+    severity: "Medium",
+    season: ["kharif", "rabi", "summer"],
+  },
+  {
+    name: "Downy Mildew",
+    affectedCrops: ["Maize", "Bajra (Pearl Millet)", "Sunflower", "Cucumber", "Pumpkin"],
+    symptoms: ["Yellowed areas on leaf upper surface", "Grey-purple fuzzy growth on lower surface", "Stunted growth"],
+    causes: "Oomycetes (Sclerospora, Peronospora, Pseudoperonospora)",
+    treatment: ["Metalaxyl 35% DS seed treatment", "Metalaxyl + Mancozeb spray", "Fosetyl-Al"],
+    prevention: ["Use treated seeds", "Resistant hybrids", "Avoid dense planting"],
+    severity: "High",
+    season: ["kharif", "summer"],
+  },
+  {
+    name: "Root Rot",
+    affectedCrops: ["Chickpea (Gram)", "Lentil (Masoor)", "Soybean", "Peas", "Cotton"],
+    symptoms: ["Yellowing and wilting of entire plant", "Dark brown/black roots", "Plant pulls easily from soil"],
+    causes: "Fungi (Rhizoctonia, Macrophomina, Fusarium), favored by waterlogging",
+    treatment: ["Seed treatment with Trichoderma viride", "Carbendazim soil drench", "Improve drainage"],
+    prevention: ["Avoid waterlogging", "Seed treatment before sowing", "Crop rotation with cereals"],
+    severity: "Medium",
+    season: ["rabi", "kharif"],
+  },
+];
+// Soil Type Dataset for Indian Agriculture
+export interface SoilData {
+  type: string;
+  characteristics: string[];
+  regions: string[];
+  suitableCrops: string[];
+  phRange: string;
+  waterRetention: "Low" | "Medium" | "High";
+  fertility: "Low" | "Medium" | "High";
+  improvements: string[];
+}
+export const soilDataset: SoilData[] = [
+  {
+    type: "Red Soil",
+    characteristics: ["Rich in iron oxide", "Low in nitrogen, phosphorus & humus", "Porous & friable", "Slightly acidic"],
+    regions: ["Tamil Nadu", "Karnataka", "Andhra Pradesh", "Odisha", "Jharkhand", "Chhattisgarh", "Madhya Pradesh", "Goa", "Maharashtra"],
+    suitableCrops: ["Groundnut", "Potato", "Maize", "Tomato", "Cotton", "Tobacco", "Millets"],
+    phRange: "5.5 - 6.5",
+    waterRetention: "Low",
+    fertility: "Medium",
+    improvements: ["Add organic matter/compost", "Apply lime to reduce acidity", "Use nitrogen & phosphorus fertilizers", "Mulching to retain moisture"],
+  },
+  {
+    type: "Black Soil",
+    characteristics: ["Rich in calcium, iron, magnesium", "Self-plowing (deep cracks in summer)", "High moisture retention", "Sticky when wet, hard when dry"],
+    regions: ["Maharashtra", "Gujarat", "Madhya Pradesh", "Karnataka", "Andhra Pradesh", "Tamil Nadu", "Telangana", "Rajasthan"],
+    suitableCrops: ["Cotton", "Soybean", "Jowar (Sorghum)", "Sugarcane", "Sunflower", "Wheat", "Chickpea (Gram)"],
+    phRange: "7.0 - 8.5",
+    waterRetention: "High",
+    fertility: "High",
+    improvements: ["Improve drainage", "Add gypsum for sodic conditions", "Green manuring", "Avoid waterlogging"],
+  },
+  {
+    type: "Sandy Soil",
+    characteristics: ["Large particles, well-drained", "Low moisture & nutrient retention", "Easy to till", "Warms up quickly in spring"],
+    regions: ["Rajasthan", "Gujarat", "Punjab", "Haryana", "Parts of UP"],
+    suitableCrops: ["Groundnut", "Bajra (Pearl Millet)", "Watermelon", "Muskmelon", "Sesame (Til)", "Barley", "Moong (Green Gram)"],
+    phRange: "6.0 - 7.5",
+    waterRetention: "Low",
+    fertility: "Low",
+    improvements: ["Add organic matter liberally", "Use drip irrigation", "Apply mulch to retain moisture", "Frequent light fertilization"],
+  },
+  {
+    type: "Clay Soil",
+    characteristics: ["Very fine particles", "Poor drainage, waterlogging risk", "High nutrient capacity", "Difficult to work when wet or dry"],
+    regions: ["Parts of Bihar", "West Bengal", "Assam", "Coastal areas", "River deltas"],
+    suitableCrops: ["Rice", "Sugarcane", "Jute", "Peas", "Lentil (Masoor)", "Potato"],
+    phRange: "6.0 - 7.5",
+    waterRetention: "High",
+    fertility: "High",
+    improvements: ["Add sand/coarse organic matter", "Improve drainage", "Raised bed cultivation", "Avoid tilling when too wet"],
+  },
+  {
+    type: "Loamy Soil",
+    characteristics: ["Ideal mix of sand, silt & clay", "Excellent drainage & moisture retention", "Rich in nutrients", "Easy to cultivate"],
+    regions: ["Indo-Gangetic plains", "Parts of Punjab", "Haryana", "UP", "MP", "River valleys"],
+    suitableCrops: ["Wheat", "Rice", "Maize", "Sugarcane", "Banana", "Tomato", "Onion", "Most vegetables", "Most crops"],
+    phRange: "6.0 - 7.0",
+    waterRetention: "Medium",
+    fertility: "High",
+    improvements: ["Maintain organic matter", "Balanced fertilization", "Crop rotation", "Green manuring"],
+  },
+  {
+    type: "Laterite Soil",
+    characteristics: ["Rich in iron & aluminium", "Poor in nitrogen & phosphorus", "Hard when dry, soft when wet", "Acidic nature"],
+    regions: ["Kerala", "Karnataka", "Tamil Nadu", "Meghalaya", "Odisha", "Assam", "Goa"],
+    suitableCrops: ["Tea", "Coffee", "Coconut", "Cashew", "Rubber", "Pepper"],
+    phRange: "4.5 - 6.0",
+    waterRetention: "Low",
+    fertility: "Low",
+    improvements: ["Heavy liming", "Abundant organic manure", "Phosphatic fertilizers", "Cover cropping"],
+  },
+  {
+    type: "Alluvial Soil",
+    characteristics: ["Deposited by rivers", "Rich in potash but poor in phosphorus", "Easily cultivable", "Found in river basins & deltas"],
+    regions: ["UP", "Bihar", "Punjab", "Haryana", "West Bengal", "Assam", "Coastal plains"],
+    suitableCrops: ["Rice", "Wheat", "Sugarcane", "Maize", "Jute", "Potato", "Vegetables"],
+    phRange: "6.5 - 8.0",
+    waterRetention: "Medium",
+    fertility: "High",
+    improvements: ["Add phosphatic fertilizers", "Maintain organic content", "Proper irrigation management", "Avoid over-cultivation"],
+  },
+];
+// Central export for all datasets
+export { cropDataset, type CropData } from "./cropDataset";
+export { fertilizerDataset, type FertilizerData } from "./fertilizerDataset";
+export { diseaseDataset, type DiseaseData } from "./diseaseDataset";
+export { soilDataset, type SoilData } from "./soilDataset";
+Now I'll update the crop model to use the real dataset instead of random values.
+
+// Simulated crop recommendation engine
+// Data-driven crop recommendation engine
+import { cropDataset, fertilizerDataset, diseaseDataset, soilDataset } from "./dataset";
+export interface SimpleInput {
+  profitPotential: "Low" | "Medium" | "High";
+  advice: string;
+  growingDays?: number;
+  yieldPerAcre?: string;
+  diseases?: string[];
+  fertilizerTip?: string;
+}
+}
+const cropDatabase: Record<string, { crops: string[]; water: ("Low" | "Medium" | "High")[]; profit: ("Low" | "Medium" | "High")[] }> = {
+  kharif: {
+    crops: ["Rice", "Maize", "Cotton", "Soybean", "Groundnut", "Sugarcane"],
+    water: ["High", "Medium", "Medium", "Medium", "Low", "High"],
+    profit: ["Medium", "Medium", "High", "Medium", "Medium", "High"],
+  },
+  rabi: {
+    crops: ["Wheat", "Mustard", "Chickpea", "Barley", "Lentil", "Peas"],
+    water: ["Medium", "Low", "Low", "Low", "Low", "Medium"],
+    profit: ["Medium", "High", "Medium", "Low", "Medium", "Medium"],
+  },
+  summer: {
+    crops: ["Watermelon", "Cucumber", "Muskmelon", "Sunflower", "Moong", "Sesame"],
+    water: ["High", "Medium", "High", "Low", "Low", "Low"],
+    profit: ["High", "Medium", "High", "Medium", "Medium", "Low"],
+  },
+  zaid: {
+    crops: ["Moong", "Urad", "Cucumber", "Pumpkin", "Bitter Gourd", "Watermelon"],
+    water: ["Low", "Low", "Medium", "Medium", "Medium", "High"],
+    profit: ["Medium", "Medium", "Medium", "Low", "Medium", "High"],
+  },
+  autumn: {
+    crops: ["Rice", "Maize", "Rapeseed", "Potato", "Soybean", "Groundnut"],
+    water: ["High", "Medium", "Low", "Medium", "Medium", "Low"],
+    profit: ["Medium", "Medium", "Medium", "High", "Medium", "Medium"],
+  },
+  wholeYear: {
+    crops: ["Sugarcane", "Banana", "Papaya", "Coconut", "Turmeric", "Ginger"],
+    water: ["High", "High", "Medium", "Medium", "Medium", "Medium"],
+    profit: ["High", "High", "High", "High", "Medium", "Medium"],
+  },
+};
+// Score a crop based on how well it matches the farmer's inputs
+function scoreCropForSimple(crop: typeof cropDataset[0], input: SimpleInput): number {
+  let score = 0;
+  // Season match (must match)
+  if (!crop.season.includes(input.season)) return -1;
+  // State match (strong signal)
+  if (crop.states.includes(input.state)) score += 30;
+  else score += 5; // still possible, just less ideal
+  // Soil type match
+  if (input.soilType && crop.soilTypes.includes(input.soilType)) score += 20;
+  else if (!input.soilType) score += 10; // unknown soil, neutral
+  // Irrigation match
+  if (input.irrigation || !crop.irrigationNeeded) score += 15;
+  else score -= 10;
+  // Drought tolerance bonus when no irrigation
+  if (!input.irrigation) {
+    if (crop.droughtTolerance === "High") score += 15;
+    else if (crop.droughtTolerance === "Medium") score += 5;
+  }
+  // Small random factor for variety
+  score += Math.random() * 5;
+  return score;
+}
+export function getSimpleRecommendation(input: SimpleInput): SimpleResult {
+  const seasonData = cropDatabase[input.season] || cropDatabase.kharif;
+  const idx = Math.floor(Math.random() * 3);
+  const crop = seasonData.crops[idx];
+  const water = seasonData.water[idx];
+  const profit = seasonData.profit[idx];
+  // Score all crops against input
+  const scored = cropDataset
+    .map(crop => ({ crop, score: scoreCropForSimple(crop, input) }))
+    .filter(c => c.score > 0)
+    .sort((a, b) => b.score - a.score);
+  const riskLevel: "Low" | "Medium" | "High" = input.irrigation ? "Low" : "Medium";
+  const best = scored[0]?.crop;
+  const adviceMap: Record<string, string> = {
+    en: `Based on your location in ${input.district}, ${input.state}, we recommend growing ${crop} this ${input.season} season. ${input.irrigation ? "With irrigation available, your risk is lower." : "Consider rainwater harvesting to reduce risk."}`,
+    hi: `${input.district}, ${input.state} में आपके स्थान के आधार पर, हम इस ${input.season} मौसम में ${crop} उगाने की सिफारिश करते हैं।`,
+    ta: `${input.district}, ${input.state} இல் உங்கள் இருப்பிடத்தின் அடிப்படையில், இந்த ${input.season} பருவத்தில் ${crop} வளர்க்க பரிந்துரைக்கிறோம்.`,
+  };
+  if (!best) {
+    // Fallback
+    return {
+      bestCrop: "Rice",
+      waterReq: "Medium",
+      riskLevel: "Medium",
+      profitPotential: "Medium",
+      advice: `Based on your location in ${input.district}, ${input.state}, we recommend consulting local agricultural officers for specific guidance.`,
+    };
+  }
+  // Determine risk based on irrigation + drought tolerance
+  let riskLevel: "Low" | "Medium" | "High" = "Medium";
+  if (input.irrigation && best.droughtTolerance !== "Low") riskLevel = "Low";
+  else if (!input.irrigation && best.droughtTolerance === "Low") riskLevel = "High";
+  // Determine profit from dataset
+  const profitStr = best.profitPerAcre;
+  const profitNum = parseInt(profitStr.replace(/[^0-9]/g, ""));
+  const profitPotential: "Low" | "Medium" | "High" = profitNum >= 50000 ? "High" : profitNum >= 25000 ? "Medium" : "Low";
+  // Find matching fertilizer
+  const matchedFert = fertilizerDataset.find(f => f.bestFor.includes(best.name) || f.bestFor.includes("All crops"));
+  const fertTip = matchedFert ? `${matchedFert.name} (${matchedFert.npkRatio}) — ${matchedFert.dosagePerAcre}` : "Balanced NPK (10-26-26)";
+  // Disease warning if detected
+  let diseaseNote = "";
+  if (input.disease && input.disease !== "None" && input.disease !== "None detected") {
+    const diseaseInfo = diseaseDataset.find(d => d.name.toLowerCase().includes(input.disease!.toLowerCase()));
+    if (diseaseInfo) {
+      diseaseNote = ` ⚠️ Disease detected: ${diseaseInfo.name}. Treatment: ${diseaseInfo.treatment[0]}.`;
+    }
+  }
+  const advice = `Based on your location in ${input.district}, ${input.state}, we recommend growing ${best.name} this ${input.season} season. Expected yield: ${best.yieldPerAcre}, Estimated profit: ${best.profitPerAcre}. ${input.irrigation ? "With irrigation available, your risk is lower." : "Consider rainwater harvesting or drought-tolerant practices."}${diseaseNote} Recommended fertilizer: ${fertTip}.`;
+  return {
+    bestCrop: crop,
+    waterReq: water,
+    bestCrop: best.name,
+    waterReq: best.waterReq,
+    riskLevel,
+    profitPotential: profit,
+    advice: adviceMap.en,
+    profitPotential,
+    advice,
+    growingDays: best.growingDays,
+    yieldPerAcre: best.yieldPerAcre,
+    diseases: best.diseases,
+    fertilizerTip: fertTip,
+  };
+}
+// Score crop for advanced mode based on NPK, climate, and soil parameters
+function scoreCropForAdvanced(crop: typeof cropDataset[0], input: AdvancedInput): number {
+  let score = 50;
+  // Temperature match
+  if (input.temperature >= crop.minTemp && input.temperature <= crop.maxTemp) score += 15;
+  else {
+    const dist = Math.min(Math.abs(input.temperature - crop.minTemp), Math.abs(input.temperature - crop.maxTemp));
+    score -= Math.min(20, dist * 2);
+  }
+  // Rainfall match
+  if (input.rainfall >= crop.minRainfall && input.rainfall <= crop.maxRainfall) score += 15;
+  else {
+    const dist = Math.min(Math.abs(input.rainfall - crop.minRainfall), Math.abs(input.rainfall - crop.maxRainfall));
+    score -= Math.min(20, dist * 0.1);
+  }
+  // Humidity match
+  if (input.humidity >= crop.minHumidity && input.humidity <= crop.maxHumidity) score += 10;
+  else score -= 5;
+  // pH match
+  if (input.ph >= crop.minPh && input.ph <= crop.maxPh) score += 10;
+  else score -= 8;
+  // NPK match
+  const nLevel = input.nitrogen > 60 ? "High" : input.nitrogen > 30 ? "Medium" : "Low";
+  const pLevel = input.phosphorus > 50 ? "High" : input.phosphorus > 25 ? "Medium" : "Low";
+  const kLevel = input.potassium > 50 ? "High" : input.potassium > 25 ? "Medium" : "Low";
+  if (nLevel === crop.nitrogenReq) score += 5;
+  if (pLevel === crop.phosphorusReq) score += 5;
+  if (kLevel === crop.potassiumReq) score += 5;
+  // Small random factor
+  score += Math.random() * 5;
+  return Math.min(98, Math.max(15, score));
+}
+export function getAdvancedRecommendation(input: AdvancedInput): AdvancedResult {
+  // Simulated Random Forest-like scoring
+  const crops = [
+    { name: "Rice", score: 0 },
+    { name: "Wheat", score: 0 },
+    { name: "Maize", score: 0 },
+    { name: "Cotton", score: 0 },
+    { name: "Sugarcane", score: 0 },
+    { name: "Chickpea", score: 0 },
+  ];
+  const scored = cropDataset.map(crop => ({
+    name: crop.name,
+    score: scoreCropForAdvanced(crop, input),
+  }));
+  crops.forEach((crop) => {
+    let s = 50;
+    if (crop.name === "Rice") s += input.rainfall > 200 ? 20 : -10;
+    if (crop.name === "Rice") s += input.humidity > 60 ? 15 : -5;
+    if (crop.name === "Wheat") s += input.temperature < 25 ? 20 : -10;
+    if (crop.name === "Wheat") s += input.ph > 6 && input.ph < 7.5 ? 15 : -5;
+    if (crop.name === "Maize") s += input.nitrogen > 50 ? 15 : -5;
+    if (crop.name === "Cotton") s += input.temperature > 25 ? 15 : -10;
+    if (crop.name === "Sugarcane") s += input.rainfall > 150 ? 20 : -15;
+    if (crop.name === "Chickpea") s += input.rainfall < 100 ? 20 : -10;
+    s += (input.phosphorus + input.potassium) > 80 ? 10 : -5;
+    crop.score = Math.min(98, Math.max(20, s + Math.random() * 10));
+  });
+  crops.sort((a, b) => b.score - a.score);
+  const topCrops = crops.slice(0, 3).map((c) => ({ name: c.name, suitability: Math.round(c.score) }));
+  scored.sort((a, b) => b.score - a.score);
+  const topCrops = scored.slice(0, 3).map(c => ({ name: c.name, suitability: Math.round(c.score) }));
+  const soilHealth = Math.min(100, Math.round((input.nitrogen + input.phosphorus + input.potassium) / 3 + input.ph * 5));
+  const floodRisk: "Low" | "Medium" | "High" = input.rainfall > 300 ? "High" : input.rainfall > 200 ? "Medium" : "Low";
+  const fertilizers = [];
+  if (input.nitrogen < 40) fertilizers.push("Urea (46-0-0)");
+  if (input.phosphorus < 30) fertilizers.push("DAP (18-46-0)");
+  if (input.potassium < 30) fertilizers.push("MOP (0-0-60)");
+  if (fertilizers.length === 0) fertilizers.push("Balanced NPK (10-26-26)");
+  // Data-driven fertilizer recommendation
+  const fertilizers: string[] = [];
+  if (input.nitrogen < 40) {
+    const f = fertilizerDataset.find(f => f.name === "Urea");
+    fertilizers.push(f ? `${f.name} (${f.npkRatio}) — ${f.dosagePerAcre}` : "Urea (46-0-0)");
+  }
+  if (input.phosphorus < 30) {
+    const f = fertilizerDataset.find(f => f.name.includes("DAP"));
+    fertilizers.push(f ? `${f.name} (${f.npkRatio}) — ${f.dosagePerAcre}` : "DAP (18-46-0)");
+  }
+  if (input.potassium < 30) {
+    const f = fertilizerDataset.find(f => f.name.includes("MOP"));
+    fertilizers.push(f ? `${f.name} (${f.npkRatio}) — ${f.dosagePerAcre}` : "MOP (0-0-60)");
+  }
+  if (fertilizers.length === 0) {
+    const f = fertilizerDataset.find(f => f.name.includes("NPK"));
+    fertilizers.push(f ? `${f.name} (${f.npkRatio})` : "Balanced NPK (10-26-26)");
+  }
+  // Profit from top crop dataset
+  const topCropData = cropDataset.find(c => c.name === topCrops[0]?.name);
+  const estimatedProfit = topCropData?.profitPerAcre || `₹${(Math.round(Math.random() * 50 + 30) * 1000).toLocaleString("en-IN")}/acre`;
+  return {
+    climateRiskScore: climateRisk,
+    soilHealthScore: soilHealth,
+    estimatedProfit: `₹${(Math.round(Math.random() * 50 + 30) * 1000).toLocaleString("en-IN")}/acre`,
+    estimatedProfit,
+    cropFailureProbability: Math.round(Math.max(5, climateRisk * 0.4 + Math.random() * 10)),
+    fertilizerRecommendation: fertilizers.join(", "),
+    fertilizerRecommendation: fertilizers.join("; "),
+    droughtRisk,
+    floodRisk,
+export function analyzeSoilImage(_file: File): Promise<ImageAnalysis> {
+  const soilTypes = ["Red Soil", "Black Soil", "Sandy Soil", "Clay Soil", "Loamy Soil"];
+  const soilTypes = soilDataset.map(s => s.type);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+export function analyzeLeafImage(_file: File): Promise<ImageAnalysis> {
+  const diseases = ["None detected", "Leaf Blight", "Powdery Mildew", "Rust", "Leaf Spot"];
+  const diseases = diseaseDataset.map(d => d.name).slice(0, 10);
+  diseases.unshift("None detected");
+  const rand = Math.random();
+  return new Promise((resolve) => {
